@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { GifGreedItem } from './GifGreedItem';
 
 const GifGrid = ({ category }) => {
+
+    const [images, setImages] = useState([]);
+
+    useEffect( () => {
+        getGif();
+    }, []); // [] executes the function just once, if not the function could execute in an infinite cycle
 
     const getGif = async() => {
 
@@ -22,13 +29,24 @@ const GifGrid = ({ category }) => {
         })
 
         console.log(gifs);
+        setImages( gifs );
 
     }
-    getGif();
+
 
     return (
         <>
             <h3>{ category }</h3>
+            {
+                images.map( img => (
+
+                    <GifGreedItem 
+                        key={ img.id }
+                        { ...img }
+                    />
+
+                ))
+            }
         </>
     )
 }
