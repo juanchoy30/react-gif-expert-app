@@ -8,16 +8,14 @@ const GifExpertApp = () => {
     /*
     const handleAdd = () => {
         const Addition = 'Banjo & Kazooie'
-
         setCategories( cats => [ ...cats, Addition] );  // cats is the previous value
-
     };
     */
 
     return (
         <>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories={ setCategories }/>
             <hr />
 
             <ol>
