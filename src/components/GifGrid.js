@@ -27,27 +27,25 @@ const GifGrid = ({ category }) => {
                 url: img.images?.downsized_medium.url  // ? if the info exists it uses it, if not it ignores it
             }
         })
-
         console.log(gifs);
         setImages( gifs );
-
     }
-
 
     return (
         <>
             <h3>{ category }</h3>
-            {
-                images.map( img => (
-
-                    <GifGreedItem 
-                        key={ img.id }
-                        { ...img }
-                    />
-
-                ))
-            }
+            <div className="card-grid">
+                {
+                    images.map( img => (
+                        <GifGreedItem 
+                            key={ img.id }
+                            { ...img }
+                        />
+                    ))
+                }
+            </div>
         </>
+
     )
 }
 
