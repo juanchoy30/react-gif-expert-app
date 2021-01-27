@@ -20,13 +20,6 @@ export const useFetchGifs = ( category ) => {
 
     }, [category]);
 
-        /*
-    useEffect( () => {
-        getGif( category )
-            .then( setImages );  // it is the same as .then( imgs => setImages( imgs ));
-    }, [ category ]); // [] executes the function just once, if not the function could execute in an infinite cycle
-    */
-
     return state;  // { data:[], loading: true };
 
 }
