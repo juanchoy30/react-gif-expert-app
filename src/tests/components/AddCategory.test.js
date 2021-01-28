@@ -4,8 +4,13 @@ import AddCategory from "../../components/AddCategory"
 
 describe('Component tests', () => {
 
-    const setCategories = () => {};
-    const wrapper = shallow( <AddCategory setCategories={ setCategories }/> );
+    const setCategories = jest.fn(); // It is the same as () => {};
+    let wrapper;
+
+    beforeEach( () => {
+        jest.clearAllMocks();  // Clear previous simulations, so they do not interfere with each other.
+        wrapper = shallow( <AddCategory setCategories={ setCategories }/> );
+    });
 
     test('should render correctly', () => {
         
@@ -23,5 +28,14 @@ describe('Component tests', () => {
         expect( wrapper.find('p').text().trim() ).toBe( value )
 
     });
+
+    test('should not post info when submit', () => {
+        
+        wrapper.find('form').simulate('submit', { preventDefault(){} });
+
+        expect( setCategories ).not.toHaveBeenCalled();
+
+    })
+    
     
 })
