@@ -35,7 +35,35 @@ describe('Component tests', () => {
 
         expect( setCategories ).not.toHaveBeenCalled();
 
+    });
+
+    test('should call the setCategories and clean text-box', () => {
+
+        const value = 'InputChange test'
+        const input = wrapper.find('input');
+
+        //1.simulate inputChange
+        input.simulate('change', { target: { value } });
+
+        //2.simulate submit
+        wrapper.find('form').simulate('submit', { preventDefault(){} });
+
+        //3.call setCategories should have been called
+        expect( setCategories ).toHaveBeenCalled();       // Makes sure setCategories has been called
+        expect( setCategories ).toHaveBeenCalledTimes(1); // Makes sure setCategories has been called a especific number of times
+        expect( setCategories ).toHaveBeenCalledWith( expect.any(Function) );   // Makes sure setCategories has been called as a function
+
+        //4.input value must be an empty string
+        expect( input.prop('value') ).toBe('');
+
+
+
+
+
+        //expect( setCategories ).toHaveBeenCalled();
+        
     })
+    
     
     
 })
