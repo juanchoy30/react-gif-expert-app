@@ -34,6 +34,12 @@ exports[`<GifGrid /> tests should show images when loading useFetchGifs 1`] = `
       title="Anything"
       url="https://localhost/any/thing.jpg"
     />
+    <GifGridItem
+      id="123"
+      key="123"
+      title="Anything"
+      url="https://localhost/any/thing.jpg"
+    />
   </div>
 </Fragment>
 `;
